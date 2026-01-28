@@ -1,6 +1,6 @@
-# [level 0] 문자열 돌리기 - 181945 
+# [level 0] 문자열 돌리기 - 181945
 
-[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/181945?language=javascript) 
+[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/181945?language=javascript)
 
 ### 성능 요약
 
@@ -43,5 +43,34 @@ c
 d
 e
 </code></pre></div>
+
+---
+
+### 풀이
+
+- 문자열은 배열처럼 인덱스로 접근 가능하므로 `for...in`으로 인덱스를 순회하며 `str[i]`를 출력한다.
+
+### 소스 코드
+
+```javascript
+const readline = require("readline");
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout,
+});
+
+let input = [];
+
+rl.on("line", function (line) {
+  input = [line];
+}).on("close", function () {
+  str = input[0];
+  for (let i in str) {
+    console.log(str[i]);
+  }
+});
+```
+
+---
 
 > 출처: 프로그래머스 코딩 테스트 연습, https://school.programmers.co.kr/learn/challenges
