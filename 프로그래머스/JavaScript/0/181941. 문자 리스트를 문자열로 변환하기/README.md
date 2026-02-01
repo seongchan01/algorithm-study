@@ -1,6 +1,6 @@
-# [level 0] 문자 리스트를 문자열로 변환하기 - 181941 
+# [level 0] 문자 리스트를 문자열로 변환하기 - 181941
 
-[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/181941?language=javascript) 
+[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/181941?language=javascript)
 
 ### 성능 요약
 
@@ -49,5 +49,22 @@
 </tr>
 </tbody>
       </table>
+
+---
+
+### 풀이
+
+- 배열에 담긴 문자들을 순서대로 하나의 문자열로 만들어야 하므로 배열을 문자열로 합쳐주는 `join` 메서드를 사용했다.
+  구분자가 필요 없는 문제이기 때문에 빈 문자열을 인자로 전달해 요구한 결과를 바로 반환하도록 구현했다.
+
+### 소스 코드
+
+```javascript
+function solution(arr) {
+  return arr.join("");
+}
+```
+
+---
 
 > 출처: 프로그래머스 코딩 테스트 연습, https://school.programmers.co.kr/learn/challenges
