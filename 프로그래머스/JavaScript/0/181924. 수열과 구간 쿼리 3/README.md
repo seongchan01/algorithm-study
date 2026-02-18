@@ -1,6 +1,6 @@
-# [level 0] 수열과 구간 쿼리 3 - 181924 
+# [level 0] 수열과 구간 쿼리 3 - 181924
 
-[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/181924) 
+[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/181924)
 
 ### 성능 요약
 
@@ -92,5 +92,25 @@
 <li>따라서 [3, 4, 1, 0, 2]를 return 합니다.</li>
 </ul>
 
+---
+
+### 풀이
+
+각 쿼리가 `[i, j]` 형태로 주어지므로 `queries`를 앞에서부터 순회하면서 매번 해당 인덱스의 값을 서로 교환하면 된다고 생각했다.  
+배열의 두 값을 바꾸기 위해 임시 변수를 사용하는 대신 구조 분해 할당 `[arr[i], arr[j]] = [arr[j], arr[i]]` 패턴을 사용해 간결하게 swap을 처리했다.  
+모든 쿼리를 순서대로 반영한 뒤 최종적으로 변경된 `arr`를 반환하도록 구현했다.
+
+### 소스 코드
+
+```javascript
+function solution(arr, queries) {
+  for (const [i, j] of queries) {
+    [arr[i], arr[j]] = [arr[j], arr[i]];
+  }
+  return arr;
+}
+```
+
+---
 
 > 출처: 프로그래머스 코딩 테스트 연습, https://school.programmers.co.kr/learn/challenges
