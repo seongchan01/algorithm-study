@@ -1,6 +1,6 @@
-# [level 0] 수열과 구간 쿼리 4 - 181922 
+# [level 0] 수열과 구간 쿼리 4 - 181922
 
-[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/181922) 
+[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/181922)
 
 ### 성능 요약
 
@@ -97,5 +97,29 @@
 
 <p>※ 2023년 04월 27일 입출력 예 설명이 수정되었습니다.</p>
 
+---
+
+### 풀이
+
+문제를 읽고 각 쿼리마다 `s`부터 `e`까지의 인덱스 범위 안에서 `k`의 배수인 인덱스를 찾아 해당 위치의 값을 `1`씩 증가시키는 구조라고 이해했다.  
+따라서 쿼리를 하나씩 순서대로 처리하면서 해당 구간을 직접 순회하는 방식으로 구현했다.
+
+구간을 돌면서 현재 인덱스가 `k`로 나누어 떨어지는지 확인하고 조건을 만족하면 `arr[index]`에 `1`을 더하도록 구성했다.  
+모든 쿼리를 순서대로 적용한 뒤 최종적으로 변경된 배열을 반환하도록 했다.
+
+### 소스 코드
+
+```javascript
+function solution(arr, queries) {
+  for (const [start, end, k] of queries) {
+    for (let index = start; index <= end; index++) {
+      if (index % k === 0) arr[index] += 1;
+    }
+  }
+  return arr;
+}
+```
+
+---
 
 > 출처: 프로그래머스 코딩 테스트 연습, https://school.programmers.co.kr/learn/challenges
