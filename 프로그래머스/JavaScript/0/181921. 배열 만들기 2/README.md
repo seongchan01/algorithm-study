@@ -1,6 +1,6 @@
-# [level 0] 배열 만들기 2 - 181921 
+# [level 0] 배열 만들기 2 - 181921
 
-[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/181921) 
+[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/181921)
 
 ### 성능 요약
 
@@ -70,5 +70,40 @@
 <li>10 이상 20 이하이면서 0과 5로만 이루어진 정수는 없습니다. 따라서 [-1]을 return 합니다.</li>
 </ul>
 
+---
+
+### 풀이
+
+`l`부터 `r`까지 전부 검사하기보다 `0`과 `5`로만 이루어진 숫자를 직접 만들어내는 방식이 효율적이라고 생각했다.  
+`5`에서 시작해 `*10`, `*10+5`를 반복하면 조건을 만족하는 수를 만들 수 있다고 보고 큐를 이용해 확장하는 방식으로 구현했다.
+
+생성된 값이 `r`을 넘지 않는 경우만 확장하고 `l` 이상인 값만 결과에 저장했다.  
+결과가 없으면 `[-1]`을 반환하도록 처리했다.
+
+### 소스 코드
+
+```javascript
+function solution(l, r) {
+  const result = [];
+  const queue = [5];
+
+  while (queue.length > 0) {
+    const x = queue.shift();
+
+    if (x > r) continue;
+    if (x >= l) result.push(x);
+
+    const next1 = x * 10;
+    const next2 = x * 10 + 5;
+
+    if (next1 <= r) queue.push(next1);
+    if (next2 <= r) queue.push(next2);
+  }
+
+  return result.length ? result : [-1];
+}
+```
+
+---
 
 > 출처: 프로그래머스 코딩 테스트 연습, https://school.programmers.co.kr/learn/challenges
