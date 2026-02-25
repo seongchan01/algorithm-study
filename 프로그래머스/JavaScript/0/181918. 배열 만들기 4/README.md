@@ -1,6 +1,6 @@
-# [level 0] 배열 만들기 4 - 181918 
+# [level 0] 배열 만들기 4 - 181918
 
-[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/181918) 
+[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/181918)
 
 ### 성능 요약
 
@@ -121,5 +121,39 @@
 <li>따라서 [1, 2, 3]을 return 합니다.</li>
 </ul>
 
+---
+
+### 풀이
+
+문제를 보고 `stk`의 마지막 값과 현재 값 `arr[i]`를 비교하면서 조건에 맞게 추가하거나 제거하는 구조라고 이해했다.  
+`stk`가 비어있거나 마지막 값이 현재 값보다 작으면 그대로 추가하고 다음 인덱스로 넘어가도록 했다.
+
+반대로 마지막 값이 현재 값보다 크거나 같으면 `stk`의 마지막 값을 제거하고 같은 인덱스에서 다시 비교하도록 구성했다.  
+그래서 `push`를 했을 때만 `i`를 증가시키는 방식으로 구현했다.
+
+### 소스 코드
+
+```javascript
+function solution(arr) {
+  const stk = [];
+  let i = 0;
+
+  while (i < arr.length) {
+    if (stk.length === 0) {
+      stk.push(arr[i]);
+      i++;
+    } else if (stk[stk.length - 1] < arr[i]) {
+      stk.push(arr[i]);
+      i++;
+    } else {
+      stk.pop();
+    }
+  }
+
+  return stk;
+}
+```
+
+---
 
 > 출처: 프로그래머스 코딩 테스트 연습, https://school.programmers.co.kr/learn/challenges
