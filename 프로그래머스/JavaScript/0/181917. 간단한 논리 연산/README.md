@@ -1,6 +1,6 @@
-# [level 0] 간단한 논리 연산 - 181917 
+# [level 0] 간단한 논리 연산 - 181917
 
-[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/181917) 
+[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/181917)
 
 ### 성능 요약
 
@@ -117,5 +117,24 @@
 </tr>
 </tbody>
       </table>
+
+---
+
+### 풀이
+
+문제에서 이미 `(x1 ∨ x2) ∧ (x3 ∨ x4)`라는 식이 주어져 있으므로 이 식을 그대로 코드로 표현하면 된다고 생각했다.  
+`∨`는 `OR` 연산이므로 `||`로 `∧`는 `AND` 연산이므로 `&&`로 바꿔 작성했다.
+
+따로 조건문을 나누기보다 논리식을 그대로 반환하는 것이 가장 간단하고 명확한 방법이라서 한 줄로 구현했다.
+
+### 소스 코드
+
+```javascript
+function solution(x1, x2, x3, x4) {
+  return (x1 || x2) && (x3 || x4);
+}
+```
+
+---
 
 > 출처: 프로그래머스 코딩 테스트 연습, https://school.programmers.co.kr/learn/challenges
