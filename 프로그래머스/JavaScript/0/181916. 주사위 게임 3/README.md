@@ -1,6 +1,6 @@
-# [level 0] 주사위 게임 3 - 181916 
+# [level 0] 주사위 게임 3 - 181916
 
-[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/181916) 
+[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/181916)
 
 ### 성능 요약
 
@@ -123,5 +123,43 @@
 <li>예제 5번에서 네 주사위 숫자가 모두 다르고 나온 숫자 중 가장 작은 숫자가 2이므로 2점을 얻습니다. 따라서 2를 return 합니다.</li>
 </ul>
 
+---
+
+### 풀이
+
+주사위 네 개의 값이 어떤 형태로 나왔는지에 따라 점수 계산식이 달라지므로 각 경우를 조건문으로 직접 나누어 처리하는 방식으로 구현했다.
+
+먼저 네 개가 모두 같은 경우를 가장 먼저 처리하고 그 다음 세 개가 같은 경우를 각각 나누어 계산하도록 구성했다.
+이후 두 개씩 같은 경우 `(2+2)` 한 쌍만 같은 경우 `(2+1+1)`를 조건으로 구분해 해당 공식에 맞게 점수를 계산했다.
+
+모든 조건에 해당하지 않으면 네 값이 모두 다른 경우이므로 `Math.min`을 사용해 가장 작은 값을 반환하도록 했다.
+
+### 소스 코드
+
+```javascript
+function solution(a, b, c, d) {
+  if (a === b && a === c && a === d) return 1111 * a;
+
+  if (a === b && a === c) return (10 * a + d) ** 2;
+  if (a === b && a === d) return (10 * a + c) ** 2;
+  if (a === c && a === d) return (10 * a + b) ** 2;
+  if (b === c && b === d) return (10 * b + a) ** 2;
+
+  if (a === b && c === d) return (a + c) * Math.abs(a - c);
+  if (a === c && b === d) return (a + b) * Math.abs(a - b);
+  if (a === d && b === c) return (a + b) * Math.abs(a - b);
+
+  if (a === b) return c * d;
+  if (a === c) return b * d;
+  if (a === d) return b * c;
+  if (b === c) return a * d;
+  if (b === d) return a * c;
+  if (c === d) return a * b;
+
+  return Math.min(a, b, c, d);
+}
+```
+
+---
 
 > 출처: 프로그래머스 코딩 테스트 연습, https://school.programmers.co.kr/learn/challenges
