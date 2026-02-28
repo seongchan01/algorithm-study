@@ -1,6 +1,6 @@
-# [level 0] 글자 이어 붙여 문자열 만들기 - 181915 
+# [level 0] 글자 이어 붙여 문자열 만들기 - 181915
 
-[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/181915) 
+[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/181915)
 
 ### 성능 요약
 
@@ -71,5 +71,26 @@
 <li>예제 2번의 <code>my_string</code>에서 인덱스 0, 1, 2, 3에 해당하는 글자는 각각 z, p, i, a이므로 <code>my_string</code>에서 <code>index_list</code>에 들어있는 원소에 해당하는 인덱스의 글자들은 각각 순서대로 p, i, z, z, a입니다. 따라서 "pizza"를 return 합니다.</li>
 </ul>
 
+---
+
+### 풀이
+
+`index_list`를 순서대로 순회하면서 각 값을 `my_string`의 인덱스로 사용해 해당 문자를 하나씩 꺼내어 문자열에 누적했다. `index_list`의 순서를 그대로 유지해 이어 붙혔다.
+
+### 소스 코드
+
+```javascript
+function solution(my_string, index_list) {
+  let result = '';
+
+  for (let i = 0; i < index_list.length; i++) {
+    result += my_string[index_list[i]];
+  }
+
+  return result;
+}
+```
+
+---
 
 > 출처: 프로그래머스 코딩 테스트 연습, https://school.programmers.co.kr/learn/challenges
