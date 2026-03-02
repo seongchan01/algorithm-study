@@ -1,6 +1,6 @@
-# [level 0] 문자열 여러 번 뒤집기 - 181913 
+# [level 0] 문자열 여러 번 뒤집기 - 181913
 
-[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/181913) 
+[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/181913)
 
 ### 성능 요약
 
@@ -86,5 +86,37 @@
 </tbody>
       </table><div class="highlight"><pre class="codehilite"><code>따라서 "programmers"를 return 합니다.
 </code></pre></div>
+
+---
+
+### 풀이
+
+`my_string`을 문자 배열로 변환한 뒤 각 `[s, e]`마다 해당 구간을 `left/right`로 직접 `swap` 하며 뒤집었다. 문자열은 직접 수정이 불가능하므로 배열로 변환해 제자리에서 처리하고 마지막에 `join`으로 문자열로 다시 합쳤다.
+
+### 소스 코드
+
+```javascript
+function solution(my_string, queries) {
+  const arr = my_string.split('');
+
+  for (let i = 0; i < queries.length; i++) {
+    const [s, e] = queries[i];
+
+    let left = s;
+    let right = e;
+    while (left < right) {
+      const temp = arr[left];
+      arr[left] = arr[right];
+      arr[right] = temp;
+      left++;
+      right--;
+    }
+  }
+
+  return arr.join('');
+}
+```
+
+---
 
 > 출처: 프로그래머스 코딩 테스트 연습, https://school.programmers.co.kr/learn/challenges
