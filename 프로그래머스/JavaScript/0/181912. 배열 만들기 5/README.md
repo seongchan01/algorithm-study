@@ -1,6 +1,6 @@
-# [level 0] 배열 만들기 5 - 181912 
+# [level 0] 배열 만들기 5 - 181912
 
-[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/181912) 
+[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/181912)
 
 ### 성능 요약
 
@@ -97,5 +97,31 @@
 <li>따라서 [56789, 99999]를 return 합니다.</li>
 </ul>
 
+---
+
+### 풀이
+
+`intStrs`를 순회하면서 각 문자열에서 `slice(s, s + l)`로 부분 문자열을 자른 후 `Number()`로 숫자로 변환했다. 변환한 값이 `k`보다 크면 `answer` 배열에 `push`하여 결과를 만들었다.
+
+### 소스 코드
+
+```javascript
+function solution(intStrs, k, s, l) {
+  let answer = [];
+
+  for (let i = 0; i < intStrs.length; i++) {
+    let str = intStrs[i].slice(s, s + l);
+    let num = Number(str);
+
+    if (num > k) {
+      answer.push(num);
+    }
+  }
+
+  return answer;
+}
+```
+
+---
 
 > 출처: 프로그래머스 코딩 테스트 연습, https://school.programmers.co.kr/learn/challenges
