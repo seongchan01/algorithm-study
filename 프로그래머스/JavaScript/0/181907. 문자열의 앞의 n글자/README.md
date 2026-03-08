@@ -1,6 +1,6 @@
-# [level 0] 문자열의 앞의 n글자 - 181907 
+# [level 0] 문자열의 앞의 n글자 - 181907
 
-[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/181907) 
+[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/181907)
 
 ### 성능 요약
 
@@ -70,5 +70,21 @@
 <li>예제 2번의 <code>my_string</code>에서 앞의 5글자는 "He110"이므로 이 문자열을 return 합니다.</li>
 </ul>
 
+---
+
+### 풀이
+
+문제에서 문자열의 앞에서부터 `n`글자를 가져오면 된다고 생각했다. 문자열의 앞부분을 자를 때는 `slice()`를 사용할 수 있으므로 시작 인덱스를 `0`으로 두고 `slice(0, n)`을 사용하면 원하는 부분 문자열을 얻을 수 있다고 판단했다. 따라서 앞에서 `n`글자를 잘라 반환하는 방식으로 해결했다.
+
+### 소스 코드
+
+```javascript
+function solution(my_string, n) {
+  let answer = my_string.slice(0, n);
+  return answer;
+}
+```
+
+---
 
 > 출처: 프로그래머스 코딩 테스트 연습, https://school.programmers.co.kr/learn/challenges
