@@ -1,6 +1,6 @@
-# [level 0] 리스트 자르기 - 181897 
+# [level 0] 리스트 자르기 - 181897
 
-[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/181897) 
+[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/181897)
 
 ### 성능 요약
 
@@ -89,5 +89,46 @@
 <li>[1, 2, 3, 4, 5, 6, 7, 8, 9]에서 1번 인덱스부터 5번 인덱스까지 2개 간격으로 자른 리스트는 [2, 4, 6]입니다.</li>
 </ul>
 
+---
+
+### 풀이
+
+문제를 읽고 `n` 값에 따라 슬라이싱 방식이 달라진다는 점이 핵심이라고 생각했다.  
+먼저 `slicer` 배열에서 `a, b, c` 값을 꺼낸 뒤 `n` 값에 따라 조건문으로 나누어 처리했다.
+
+`n = 1, 2, 3`의 경우는 연속적인 구간을 자르는 것이므로 `slice()` 메서드를 사용해 해결했고.  
+`n = 4`의 경우는 `c` 간격으로 값을 가져와야 하기 때문에 반복문을 사용해 배열에 추가하는 방식으로 구현했다.
+
+### 소스 코드
+
+```javascript
+function solution(n, slicer, num_list) {
+  const a = slicer[0];
+  const b = slicer[1];
+  const c = slicer[2];
+
+  if (n === 1) {
+    return num_list.slice(0, b + 1);
+  }
+
+  if (n === 2) {
+    return num_list.slice(a);
+  }
+
+  if (n === 3) {
+    return num_list.slice(a, b + 1);
+  }
+
+  if (n === 4) {
+    const result = [];
+    for (let i = a; i <= b; i += c) {
+      result.push(num_list[i]);
+    }
+    return result;
+  }
+}
+```
+
+---
 
 > 출처: 프로그래머스 코딩 테스트 연습, https://school.programmers.co.kr/learn/challenges
