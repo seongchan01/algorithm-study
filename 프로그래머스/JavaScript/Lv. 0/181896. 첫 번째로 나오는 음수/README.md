@@ -1,6 +1,6 @@
-# [level 0] 첫 번째로 나오는 음수 - 181896 
+# [level 0] 첫 번째로 나오는 음수 - 181896
 
-[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/181896) 
+[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/181896)
 
 ### 성능 요약
 
@@ -66,5 +66,27 @@
 <li>음수가 없으므로 -1을 return합니다.</li>
 </ul>
 
+---
+
+### 풀이
+
+문제를 보고 배열을 앞에서부터 순서대로 확인하면서 처음 등장하는 음수의 위치를 찾으면 된다고 생각했다.  
+배열을 순회하면서 값이 `0`보다 작은 경우 해당 인덱스를 바로 반환하도록 구현했다.  
+만약 끝까지 확인했는데 음수가 없다면 문제 조건에 따라 `-1`을 반환하도록 했다.
+
+### 소스 코드
+
+```javascript
+function solution(num_list) {
+  for (let i = 0; i < num_list.length; i++) {
+    if (num_list[i] < 0) {
+      return i;
+    }
+  }
+  return -1;
+}
+```
+
+---
 
 > 출처: 프로그래머스 코딩 테스트 연습, https://school.programmers.co.kr/learn/challenges
