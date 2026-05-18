@@ -3,10 +3,10 @@ import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
 class Solution {
-	static int N, M;
-	static boolean[][] graph;
-	static boolean[] visit;
-	static int answer;
+	private static boolean[] visit;
+	private static boolean[][] graph;
+	private static int N;
+	private static int answer;
 
 	public static void main(String args[]) throws Exception {
 
@@ -19,16 +19,17 @@ class Solution {
 			StringTokenizer st = new StringTokenizer(br.readLine());
 
 			N = Integer.parseInt(st.nextToken());
-			M = Integer.parseInt(st.nextToken());
+			int M = Integer.parseInt(st.nextToken());
 
 			graph = new boolean[N + 1][N + 1];
 			visit = new boolean[N + 1];
 			answer = 0;
 
 			for (int i = 0; i < M; i++) {
-				st = new StringTokenizer(br.readLine());
-				int x = Integer.parseInt(st.nextToken());
-				int y = Integer.parseInt(st.nextToken());
+				StringTokenizer st2 = new StringTokenizer(br.readLine());
+
+				int x = Integer.parseInt(st2.nextToken());
+				int y = Integer.parseInt(st2.nextToken());
 
 				graph[x][y] = true;
 				graph[y][x] = true;
@@ -45,9 +46,9 @@ class Solution {
 	}
 
 	static void dfs(int now, int length) {
-		visit[now] = true;
-
 		answer = Math.max(answer, length);
+
+		visit[now] = true;
 
 		for (int next = 1; next <= N; next++) {
 			if (graph[now][next] && !visit[next]) {
@@ -57,5 +58,4 @@ class Solution {
 
 		visit[now] = false;
 	}
-
 }
