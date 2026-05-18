@@ -3,59 +3,58 @@ import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
 class Solution {
-    public static void main(String args[]) throws Exception {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        StringBuilder sb = new StringBuilder();
 
-        int T = Integer.parseInt(br.readLine());
+	public static void main(String args[]) throws Exception {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		StringBuilder sb = new StringBuilder();
 
-        for (int ts = 1; ts <= T; ts++) {
-            StringTokenizer st = new StringTokenizer(br.readLine());
-            int N = Integer.parseInt(st.nextToken());
-            int M = Integer.parseInt(st.nextToken());
-            int[] arr1 = new int[N];
-            int[] arr2 = new int[M];
+		int T = Integer.parseInt(br.readLine());
 
-            StringTokenizer st1 = new StringTokenizer(br.readLine());
-            for (int i = 0; i < N; i++) {
-                arr1[i] = Integer.parseInt(st1.nextToken());
-            }
+		for (int tc = 1; tc <= T; tc++) {
+			StringTokenizer st = new StringTokenizer(br.readLine());
 
-            StringTokenizer st2 = new StringTokenizer(br.readLine());
-            for (int i = 0; i < M; i++) {
-                arr2[i] = Integer.parseInt(st2.nextToken());
-            }
+			int N = Integer.parseInt(st.nextToken());
+			int M = Integer.parseInt(st.nextToken());
 
-            int max = Integer.MIN_VALUE;
+			int[] A = new int[N];
+			int[] B = new int[M];
 
-            if (N <= M) {
-                for (int i = 0; i <= M - N; i++) {
-                    int sum = 0;
+			st = new StringTokenizer(br.readLine());
+			for (int i = 0; i < N; i++) {
+				A[i] = Integer.parseInt(st.nextToken());
+			}
 
-                    for (int j = 0; j < N; j++) {
-                        sum += arr1[j] * arr2[j + i];
-                    }
+			st = new StringTokenizer(br.readLine());
+			for (int i = 0; i < M; i++) {
+				B[i] = Integer.parseInt(st.nextToken());
+			}
 
-                    if (sum > max) {
-                        max = sum;
-                    }
-                }
-            } else {
-                for (int i = 0; i <= N - M; i++) {
-                    int sum = 0;
+			int[] longArr;
+			int[] shortArr;
 
-                    for (int j = 0; j < M; j++) {
-                        sum += arr1[j + i] * arr2[j];
-                    }
+			if (A.length >= B.length) {
+				longArr = A;
+				shortArr = B;
+			} else {
+				longArr = B;
+				shortArr = A;
+			}
 
-                    if (sum > max) {
-                        max = sum;
-                    }
-                }
-            }
+			int answer = 0;
 
-            sb.append("#").append(ts).append(" ").append(max).append("\n");
-        }
-        System.out.println(sb);
-    }
+			for (int i = 0; i <= longArr.length - shortArr.length; i++) {
+				int sum = 0;
+
+				for (int j = 0; j < shortArr.length; j++) {
+					sum += longArr[i + j] * shortArr[j];
+				}
+
+				answer = Math.max(answer, sum);
+			}
+
+			sb.append("#").append(tc).append(" ").append(answer).append("\n");
+		}
+
+		System.out.print(sb);
+	}
 }
