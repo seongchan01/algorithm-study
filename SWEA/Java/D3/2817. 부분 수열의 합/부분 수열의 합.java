@@ -8,7 +8,6 @@ class Solution {
 	static int answer;
 
 	public static void main(String args[]) throws Exception {
-
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		StringBuilder sb = new StringBuilder();
 
@@ -16,6 +15,7 @@ class Solution {
 
 		for (int tc = 1; tc <= T; tc++) {
 			StringTokenizer st = new StringTokenizer(br.readLine());
+
 			N = Integer.parseInt(st.nextToken());
 			K = Integer.parseInt(st.nextToken());
 
@@ -33,7 +33,7 @@ class Solution {
 			sb.append("#").append(tc).append(" ").append(answer).append("\n");
 		}
 
-		System.out.print(sb);
+		System.out.println(sb);
 	}
 
 	static void dfs(int idx, int sum) {
@@ -48,8 +48,8 @@ class Solution {
 			return;
 		}
 
-		dfs(idx + 1, sum + arr[idx]);
 		dfs(idx + 1, sum);
+		dfs(idx + 1, sum + arr[idx]);
 	}
 
 }
