@@ -3,32 +3,37 @@ import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
 class Solution {
-    public static void main(String args[]) throws Exception {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        StringBuilder sb = new StringBuilder();
+	public static void main(String args[]) throws Exception {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		StringBuilder sb = new StringBuilder();
 
-        int T = Integer.parseInt(br.readLine());
+		int T = Integer.parseInt(br.readLine());
 
-        for (int i = 1; i <= T; i++) {
-            int[] arr = new int[101];
-            int tc = Integer.parseInt(br.readLine());
+		for (int tc = 1; tc <= T; tc++) {
+			int t = Integer.parseInt(br.readLine());
 
-            StringTokenizer st = new StringTokenizer(br.readLine());
-            for (int j = 0; j < 1000; j++) {
-                arr[Integer.parseInt(st.nextToken())]++;
-            }
+			int[] score = new int[101];
 
-            int max = 0;
-            int result = 0;
-            for (int k = 0; k < arr.length; k++) {
-                if (arr[k] >= max) {
-                    max = arr[k];
-                    result = k;
-                }
-            }
+			StringTokenizer st = new StringTokenizer(br.readLine());
+			for (int i = 0; i < 1000; i++) {
+				int n = Integer.parseInt(st.nextToken());
 
-            sb.append("#").append(tc).append(" ").append(result).append("\n");
-        }
-        System.out.println(sb);
-    }
+				score[n]++;
+			}
+
+			int max = 0;
+			int answer = 0;
+
+			for (int i = 0; i < 100; i++) {
+				if (max <= score[i]) {
+					max = score[i];
+					answer = i;
+				}
+			}
+
+			sb.append("#").append(t).append(" ").append(answer).append("\n");
+		}
+
+		System.out.print(sb);
+	}
 }
