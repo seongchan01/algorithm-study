@@ -5,6 +5,7 @@ import java.util.StringTokenizer;
 class Solution {
 	public static void main(String args[]) throws Exception {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		StringBuilder sb = new StringBuilder();
 
 		int T = Integer.parseInt(br.readLine());
 
@@ -15,20 +16,20 @@ class Solution {
 			int B = Integer.parseInt(st.nextToken());
 			int N = Integer.parseInt(st.nextToken());
 
-			int cnt = 0;
-			while (A <= N && B <= N) {
-				cnt++;
+			int answer = 0;
 
-				if (A < B) {
+			while (A <= N && B <= N) {
+				if (A <= B) {
 					A += B;
 				} else {
 					B += A;
 				}
-
+				answer++;
 			}
-			System.out.println(cnt);
+
+			sb.append(answer).append("\n");
 		}
 
+		System.out.println(sb);
 	}
-
 }
