@@ -3,39 +3,35 @@ import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
 class Solution {
-    public static void main(String args[]) throws Exception {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        StringBuilder sb = new StringBuilder();
+	public static void main(String args[]) throws Exception {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		StringBuilder sb = new StringBuilder();
 
-        int T = Integer.parseInt(br.readLine());
+		int T = Integer.parseInt(br.readLine());
 
-        for (int tc = 1; tc <= T; tc++) {
-            StringTokenizer st = new StringTokenizer(br.readLine());
+		for (int tc = 1; tc <= T; tc++) {
+			StringTokenizer st = new StringTokenizer(br.readLine());
 
-            int h1 = Integer.parseInt(st.nextToken());
-            int m1 = Integer.parseInt(st.nextToken());
-            int h2 = Integer.parseInt(st.nextToken());
-            int m2 = Integer.parseInt(st.nextToken());
+			int h1 = Integer.parseInt(st.nextToken());
+			int m1 = Integer.parseInt(st.nextToken());
+			int h2 = Integer.parseInt(st.nextToken());
+			int m2 = Integer.parseInt(st.nextToken());
 
-            int h = h1 + h2;
-            int m = m1 + m2;
+			int hour = h1 + h2;
+			int minute = m1 + m2;
 
-            if (m >= 60) {
-                m -= 60;
-                h += 1;
-            }
+			if (minute >= 60) {
+				hour++;
+				minute %= 60;
+			}
 
-            if (h > 12) {
-                h %= 12;
+			if (hour > 12) {
+				hour -= 12;
+			}
 
-                if (h == 0) {
-                    h = 12;
-                }
-            }
+			sb.append("#").append(tc).append(" ").append(hour).append(" ").append(minute).append("\n");
+		}
 
-            sb.append("#").append(tc).append(" ").append(h).append(" ").append(m).append("\n");
-        }
-
-        System.out.print(sb);
-    }
+		System.out.print(sb);
+	}
 }
