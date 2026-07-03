@@ -1,0 +1,82 @@
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.util.StringTokenizer;
+
+class Solution {
+
+	public static void main(String[] args) throws Exception {
+
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		StringBuilder sb = new StringBuilder();
+
+		int T = Integer.parseInt(br.readLine());
+
+		int[] rPlus = { -1, 1, 0, 0 };
+		int[] cPlus = { 0, 0, -1, 1 };
+
+		int[] rCross = { -1, -1, 1, 1 };
+		int[] cCross = { -1, 1, -1, 1 };
+
+		for (int tc = 1; tc <= T; tc++) {
+
+			StringTokenizer st = new StringTokenizer(br.readLine());
+
+			int N = Integer.parseInt(st.nextToken());
+			int M = Integer.parseInt(st.nextToken());
+
+			int[][] arr = new int[N][N];
+
+			for (int i = 0; i < N; i++) {
+				st = new StringTokenizer(br.readLine());
+
+				for (int j = 0; j < N; j++) {
+					arr[i][j] = Integer.parseInt(st.nextToken());
+				}
+			}
+
+			int answer = 0;
+
+			for (int i = 0; i < N; i++) {
+				for (int j = 0; j < N; j++) {
+
+					int plus = arr[i][j];
+					int cross = arr[i][j];
+
+					for (int dir = 0; dir < 4; dir++) {
+						for (int d = 1; d < M; d++) {
+
+							int nr = i + rPlus[dir] * d;
+							int nc = j + cPlus[dir] * d;
+
+							if (nr < 0 || nr >= N || nc < 0 || nc >= N) {
+								continue;
+							}
+
+							plus += arr[nr][nc];
+						}
+					}
+
+					for (int dir = 0; dir < 4; dir++) {
+						for (int d = 1; d < M; d++) {
+
+							int nr = i + rCross[dir] * d;
+							int nc = j + cCross[dir] * d;
+
+							if (nr < 0 || nr >= N || nc < 0 || nc >= N) {
+								continue;
+							}
+
+							cross += arr[nr][nc];
+						}
+					}
+
+					answer = Math.max(answer, Math.max(plus, cross));
+				}
+			}
+
+			sb.append("#").append(tc).append(" ").append(answer).append("\n");
+		}
+
+		System.out.println(sb);
+	}
+}
