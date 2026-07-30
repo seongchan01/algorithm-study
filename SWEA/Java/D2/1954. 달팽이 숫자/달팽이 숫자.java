@@ -1,9 +1,9 @@
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
-class Solution {
+public class Solution { // 1954. 달팽이 숫자
 
-	public static void main(String args[]) throws Exception {
+	public static void main(String[] args) throws Exception {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		StringBuilder sb = new StringBuilder();
 
@@ -24,14 +24,13 @@ class Solution {
 			for (int num = 1; num <= N * N; num++) {
 				arr[x][y] = num;
 
-				if (num == N * N) {
+				if (num == N * N)
 					break;
-				}
 
 				int nx = x + dx[dir];
 				int ny = y + dy[dir];
 
-				if (nx < 0 || ny < 0 || nx >= N || ny >= N || arr[nx][ny] != 0) {
+				if (nx >= N || nx < 0 || ny >= N || ny < 0 || arr[nx][ny] != 0) {
 					dir = (dir + 1) % 4;
 
 					nx = x + dx[dir];
@@ -44,15 +43,16 @@ class Solution {
 
 			sb.append("#").append(tc).append("\n");
 
-			for (int i = 0; i < arr.length; i++) {
-				for (int j = 0; j < arr.length; j++) {
+			for (int i = 0; i < N; i++) {
+				for (int j = 0; j < N; j++) {
 					sb.append(arr[i][j]).append(" ");
 				}
 				sb.append("\n");
 			}
+
 		}
 
 		System.out.println(sb);
-	}
 
+	}
 }
