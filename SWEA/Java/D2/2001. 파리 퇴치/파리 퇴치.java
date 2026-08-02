@@ -2,7 +2,7 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
-class Solution {
+public class Solution { // 2001. 파리퇴치
 
 	public static void main(String args[]) throws Exception {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -44,6 +44,6 @@ class Solution {
 			sb.append("#").append(tc).append(" ").append(answer).append("\n");
 		}
 
-		System.out.print(sb);
+		System.out.println(sb);
 	}
 }
