@@ -2,13 +2,14 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
-class Solution {
-	private static boolean[] visit;
-	private static boolean[][] graph;
-	private static int N;
-	private static int answer;
+public class Solution { // 2814. 최장 경로
 
-	public static void main(String args[]) throws Exception {
+	static boolean[][] graph;
+	static boolean[] visit;
+	static int N;
+	static int answer;
+
+	public static void main(String[] args) throws Exception {
 
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		StringBuilder sb = new StringBuilder();
@@ -26,10 +27,10 @@ class Solution {
 			answer = 0;
 
 			for (int i = 0; i < M; i++) {
-				StringTokenizer st2 = new StringTokenizer(br.readLine());
+				st = new StringTokenizer(br.readLine());
 
-				int x = Integer.parseInt(st2.nextToken());
-				int y = Integer.parseInt(st2.nextToken());
+				int x = Integer.parseInt(st.nextToken());
+				int y = Integer.parseInt(st.nextToken());
 
 				graph[x][y] = true;
 				graph[y][x] = true;
@@ -42,10 +43,11 @@ class Solution {
 			sb.append("#").append(tc).append(" ").append(answer).append("\n");
 		}
 
-		System.out.print(sb);
+		System.out.println(sb);
 	}
 
 	static void dfs(int now, int length) {
+
 		answer = Math.max(answer, length);
 
 		visit[now] = true;
