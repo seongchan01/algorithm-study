@@ -4,8 +4,7 @@ import java.util.ArrayDeque;
 import java.util.Queue;
 import java.util.StringTokenizer;
 
-class Solution {
-
+public class Solution {
 	public static void main(String args[]) throws Exception {
 
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -21,25 +20,25 @@ class Solution {
 				queue.add(Integer.parseInt(st.nextToken()));
 			}
 
-			boolean cycle = true;
+			boolean finished = false;
+			while (true) {
 
-			while (cycle) {
 				for (int i = 1; i <= 5; i++) {
-					int num = queue.poll() - i;
+					int n = queue.poll() - i;
 
-					if (num < 1) {
-						num = 0;
-						queue.add(num);
-						cycle = false;
+					if (n <= 0) {
+						queue.add(0);
+						finished = true;
 						break;
 					} else {
-						queue.add(num);
+						queue.add(n);
 					}
 				}
 
-				if (!cycle) {
+				if (finished) {
 					break;
 				}
+
 			}
 
 			sb.append("#").append(T).append(" ");
@@ -51,6 +50,6 @@ class Solution {
 			sb.append("\n");
 		}
 
-		System.out.print(sb);
+		System.out.println(sb);
 	}
 }
